@@ -1,6 +1,6 @@
 ---
 name: demo-speaking-coach
-description: Produces a speaking coach document for a Joule Studio demo script. Takes a completed demo script and generates line-by-line delivery notes — pause points, pacing, tone, rhythm, and energy cues — saved as a separate Word document alongside the script. Use when the user wants delivery coaching, presentation tips, or a rehearsal guide for their demo.
+description: Produces a speaking coach document for a Joule Studio demo script. Takes a completed demo script and generates line-by-line delivery notes — pause points, pacing, tone, rhythm, and energy cues — saved as a separate Word document alongside the script. Use when the user wants delivery coaching, presentation tips, or a rehearsal guide for their demo. Triggered by the phrase "use speaking coach".
 metadata:
   version: 1.0.0
   author: tc
