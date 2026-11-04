@@ -1,0 +1,20 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-afc-scheduling-spi-mcp-server
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+requires:
+  - name: SSPIV1
+    kind: api
+    ordId: sap.afc:apiResource:SSPIV1:v1
+
+provides:
+  apis:
+    - name: sap-afc-scheduling-spi-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:financial-closing-advisor-94a36.sap-afc-scheduling-spi-mcp-server:v1

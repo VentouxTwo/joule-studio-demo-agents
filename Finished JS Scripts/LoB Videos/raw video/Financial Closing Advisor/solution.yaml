@@ -1,0 +1,12 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: financial-closing-advisor-94a36
+  version: "1.0.0"
+  description: "AI agent supporting financial controllers during the financial closing cycle by monitoring task status, dependency chains, and recommending next actions via SAP Advanced Financial Closing."
+
+assets:
+  - ref: ./assets/financial-closing-advisor-agent/asset.yaml
+  - ref: ./assets/sap-afc-scheduling-spi-mcp-server/asset.yaml
+  - ref: ./assets/sap-afc-task-provider-v2-mcp-server/asset.yaml

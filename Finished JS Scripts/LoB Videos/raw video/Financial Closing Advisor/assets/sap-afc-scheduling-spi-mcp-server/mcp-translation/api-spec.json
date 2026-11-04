@@ -1,0 +1,478 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "SAP Advanced Financial Closing Scheduling Service Provider Interface",
+    "description": "The Scheduling Service Provider Interface of SAP Advanced Financial Closing allows the integration of third-party scheduling systems with SAP Advanced Financial Closing. It includes the retrieval of job definitions, as well as the scheduling and synchronization of jobs. <a href=\"https://api.sap.com/api/SSPIV1/overview\" target=\"_blank\">See OpenAPI Specification on SAP Business Accelerator Hub</a>.",
+    "version": "1.0.0"
+  },
+  "x-sap-shortText": "Defines how an application can integrate with job scheduling provider service",
+  "servers": [
+    {
+      "url": "/api/job-scheduling/v1"
+    }
+  ],
+  "tags": [
+    {"name": "Capabilities"},
+    {"name": "Job Definition"},
+    {"name": "Job"},
+    {"name": "Job Result"},
+    {"name": "Notification"}
+  ],
+  "paths": {
+    "/Capabilities": {
+      "get": {
+        "summary": "Retrieves capabilities.",
+        "tags": ["Capabilities"],
+        "parameters": [],
+        "responses": {
+          "200": {"description": "Retrieved capabilities", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.Capabilities"}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "404": {"$ref": "#/components/responses/404"},
+          "406": {"$ref": "#/components/responses/406"},
+          "409": {"$ref": "#/components/responses/409"},
+          "411": {"$ref": "#/components/responses/411"},
+          "413": {"$ref": "#/components/responses/413"},
+          "415": {"$ref": "#/components/responses/415"},
+          "429": {"$ref": "#/components/responses/429"},
+          "500": {"$ref": "#/components/responses/500"},
+          "501": {"$ref": "#/components/responses/501"},
+          "503": {"$ref": "#/components/responses/503"}
+        },
+        "description": "The operation allows you to retrieve capabilities."
+      }
+    },
+    "/Job": {
+      "get": {
+        "summary": "Retrieves a list of job.",
+        "tags": ["Job"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "description": "The number of query results to skip.", "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "description": "Maximum number of query results to return per page.", "schema": {"type": "string"}},
+          {"name": "referenceID", "in": "query", "required": false, "description": "Filter by referenceID.", "schema": {"type": "string", "format": "uuid"}},
+          {"name": "name", "in": "query", "required": false, "description": "Filter by name.", "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved job", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of Job", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.Job"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "404": {"$ref": "#/components/responses/404"},
+          "406": {"$ref": "#/components/responses/406"},
+          "409": {"$ref": "#/components/responses/409"},
+          "411": {"$ref": "#/components/responses/411"},
+          "413": {"$ref": "#/components/responses/413"},
+          "415": {"$ref": "#/components/responses/415"},
+          "429": {"$ref": "#/components/responses/429"},
+          "500": {"$ref": "#/components/responses/500"},
+          "501": {"$ref": "#/components/responses/501"},
+          "503": {"$ref": "#/components/responses/503"}
+        },
+        "description": "The operation allows you to retrieve a list of job."
+      },
+      "post": {
+        "summary": "Creates a single job.",
+        "tags": ["Job"],
+        "requestBody": {
+          "description": "New job",
+          "required": true,
+          "content": {"application/json": {"schema": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.Job-create"}}}
+        },
+        "responses": {
+          "201": {"description": "Created job", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.Job"}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "404": {"$ref": "#/components/responses/404"},
+          "406": {"$ref": "#/components/responses/406"},
+          "409": {"$ref": "#/components/responses/409"},
+          "411": {"$ref": "#/components/responses/411"},
+          "413": {"$ref": "#/components/responses/413"},
+          "415": {"$ref": "#/components/responses/415"},
+          "429": {"$ref": "#/components/responses/429"},
+          "500": {"$ref": "#/components/responses/500"},
+          "501": {"$ref": "#/components/responses/501"},
+          "503": {"$ref": "#/components/responses/503"}
+        },
+        "description": "The operation allows you to create a single job."
+      }
+    },
+    "/Job/{ID}": {
+      "parameters": [{"description": "key: ID", "in": "path", "name": "ID", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves a single job.",
+        "tags": ["Job"],
+        "parameters": [],
+        "responses": {
+          "200": {"description": "Retrieved job", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.Job"}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "404": {"$ref": "#/components/responses/404"},
+          "406": {"$ref": "#/components/responses/406"},
+          "409": {"$ref": "#/components/responses/409"},
+          "411": {"$ref": "#/components/responses/411"},
+          "413": {"$ref": "#/components/responses/413"},
+          "415": {"$ref": "#/components/responses/415"},
+          "429": {"$ref": "#/components/responses/429"},
+          "500": {"$ref": "#/components/responses/500"},
+          "501": {"$ref": "#/components/responses/501"},
+          "503": {"$ref": "#/components/responses/503"}
+        },
+        "description": "Retrieve a single job."
+      }
+    },
+    "/Job/{ID}/parameters": {
+      "parameters": [{"description": "key: ID", "in": "path", "name": "ID", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves a list of parameters of a job.",
+        "tags": ["Job"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved parameters", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of JobParameter", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobParameter"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve parameters of a job."
+      }
+    },
+    "/Job/{ID}/results": {
+      "parameters": [{"description": "key: ID", "in": "path", "name": "ID", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves a list of results of a job.",
+        "tags": ["Job"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved results", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of JobResult", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobResult"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve results of a job."
+      }
+    },
+    "/Job/{ID}/cancel": {
+      "post": {
+        "summary": "Invokes action cancel",
+        "tags": ["Job"],
+        "responses": {
+          "204": {"description": "Success"},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "parameters": [{"description": "key: ID", "in": "path", "name": "ID", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+        "requestBody": {"required": false, "content": {"application/json": {"schema": {"type": "object"}}}},
+        "description": "Cancel a job."
+      }
+    },
+    "/JobDefinition": {
+      "get": {
+        "summary": "Retrieves a list of job definition.",
+        "tags": ["Job Definition"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "name", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "search", "in": "query", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved job definition", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of JobDefinition", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobDefinition"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve job definitions."
+      }
+    },
+    "/JobDefinition/{name}": {
+      "parameters": [{"description": "key: name", "in": "path", "name": "name", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves a single job definition.",
+        "tags": ["Job Definition"],
+        "parameters": [],
+        "responses": {
+          "200": {"description": "Retrieved job definition", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobDefinition"}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "404": {"$ref": "#/components/responses/404"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve a single job definition."
+      }
+    },
+    "/JobDefinition/{name}/parameters": {
+      "parameters": [{"description": "key: name", "in": "path", "name": "name", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves parameters of a job definition.",
+        "tags": ["Job Definition"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved parameters", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of JobParameterDefinition", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobParameterDefinition"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve parameters of a job definition."
+      }
+    },
+    "/JobDefinition/{name}/texts": {
+      "parameters": [{"description": "key: name", "in": "path", "name": "name", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves texts of a job definition.",
+        "tags": ["Job Definition"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved texts", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of JobDefinitionText", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobDefinitionText"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve texts of a job definition."
+      }
+    },
+    "/JobResult/{ID}": {
+      "parameters": [{"description": "key: ID", "in": "path", "name": "ID", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves a single job result.",
+        "tags": ["Job Result"],
+        "parameters": [],
+        "responses": {
+          "200": {"description": "Retrieved job result", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobResult"}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "404": {"$ref": "#/components/responses/404"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve a single job result."
+      }
+    },
+    "/JobResult/{ID}/messages": {
+      "parameters": [{"description": "key: ID", "in": "path", "name": "ID", "required": true, "schema": {"type": "string", "maxLength": 255}}],
+      "get": {
+        "summary": "Retrieves messages of a job result.",
+        "tags": ["Job Result"],
+        "parameters": [
+          {"name": "skip", "in": "query", "required": false, "schema": {"type": "string"}},
+          {"name": "top", "in": "query", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Retrieved messages", "content": {"application/json": {"schema": {"type": "array", "title": "Collection of JobResultMessage", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobResultMessage"}}}}},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "description": "Retrieve messages of a job result."
+      }
+    },
+    "/notify": {
+      "post": {
+        "summary": "Invokes action notify",
+        "tags": ["Notification"],
+        "responses": {
+          "204": {"description": "Success"},
+          "400": {"$ref": "#/components/responses/400"},
+          "401": {"$ref": "#/components/responses/401"},
+          "403": {"$ref": "#/components/responses/403"},
+          "500": {"$ref": "#/components/responses/500"}
+        },
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {"application/json": {"schema": {"type": "object", "properties": {"notifications": {"type": "array", "items": {"allOf": [{"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.Notification"}], "nullable": true}}}}}}
+        },
+        "description": "Send notifications about task list status changes."
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "sapafcsdk.scheduling.ProviderService.Capabilities": {
+        "title": "Capabilities",
+        "type": "object",
+        "properties": {
+          "supportsNotification": {"type": "boolean"},
+          "applicationUrl": {"type": "string"}
+        }
+      },
+      "sapafcsdk.scheduling.ProviderService.Job": {
+        "title": "Job",
+        "type": "object",
+        "properties": {
+          "ID": {"type": "string", "maxLength": 255},
+          "name": {"type": "string", "maxLength": 255},
+          "referenceID": {"type": "string", "format": "uuid"},
+          "version": {"type": "string", "maxLength": 255},
+          "status": {"type": "string", "maxLength": 255, "enum": ["requested", "running", "completed", "completedWithWarning", "completedWithError", "failed", "cancelRequested", "canceled"]},
+          "createdAt": {"type": "string", "format": "date-time"},
+          "createdBy": {"type": "string", "maxLength": 255},
+          "modifiedAt": {"type": "string", "format": "date-time"},
+          "modifiedBy": {"type": "string", "maxLength": 255},
+          "link": {"type": "string", "maxLength": 5000},
+          "startDateTime": {"type": "string", "format": "date-time"},
+          "testRun": {"type": "boolean"},
+          "errorOnlyRun": {"type": "boolean"}
+        },
+        "required": ["ID", "name", "referenceID", "version", "status"]
+      },
+      "sapafcsdk.scheduling.ProviderService.Job-create": {
+        "title": "Job (for create)",
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "maxLength": 255},
+          "referenceID": {"type": "string", "format": "uuid"},
+          "startDateTime": {"type": "string", "format": "date-time"},
+          "errorOnlyRun": {"type": "boolean"},
+          "parameters": {"type": "array", "items": {"$ref": "#/components/schemas/sapafcsdk.scheduling.ProviderService.JobParameter-create"}}
+        },
+        "required": ["name", "referenceID"]
+      },
+      "sapafcsdk.scheduling.ProviderService.JobDefinition": {
+        "title": "JobDefinition",
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "maxLength": 255},
+          "description": {"type": "string", "maxLength": 5000},
+          "longDescription": {"type": "string", "maxLength": 5000},
+          "version": {"type": "string", "maxLength": 255},
+          "vendorName": {"type": "string"},
+          "vendorSystem": {"type": "string"},
+          "supportsStartDateTime": {"type": "boolean"},
+          "supportsTestRun": {"type": "boolean"},
+          "supportsErrorOnlyRun": {"type": "boolean"}
+        },
+        "required": ["name", "version"]
+      },
+      "sapafcsdk.scheduling.ProviderService.JobDefinitionText": {
+        "title": "JobDefinitionText",
+        "type": "object",
+        "properties": {
+          "locale": {"type": "string", "maxLength": 14},
+          "name": {"type": "string", "maxLength": 255},
+          "description": {"type": "string", "maxLength": 5000},
+          "longDescription": {"type": "string", "maxLength": 5000}
+        }
+      },
+      "sapafcsdk.scheduling.ProviderService.JobParameter": {
+        "title": "JobParameter",
+        "type": "object",
+        "properties": {
+          "ID": {"type": "string", "maxLength": 255},
+          "jobID": {"type": "string", "maxLength": 255},
+          "name": {"type": "string", "maxLength": 255},
+          "value": {"oneOf": [{"type": "string", "maxLength": 5000}, {"type": "boolean"}, {"type": "number"}]}
+        },
+        "required": ["ID", "name", "value"]
+      },
+      "sapafcsdk.scheduling.ProviderService.JobParameter-create": {
+        "title": "JobParameter (for create)",
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "maxLength": 255},
+          "value": {"oneOf": [{"type": "string", "maxLength": 5000}, {"type": "boolean"}, {"type": "number"}]}
+        },
+        "required": ["name", "value"]
+      },
+      "sapafcsdk.scheduling.ProviderService.JobParameterDefinition": {
+        "title": "JobParameterDefinition",
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "maxLength": 255},
+          "jobName": {"type": "string", "maxLength": 255},
+          "description": {"type": "string", "maxLength": 5000},
+          "type": {"type": "string", "maxLength": 255, "enum": ["readOnlyValue", "writableValue", "mapping"]},
+          "dataType": {"type": "string", "maxLength": 255, "enum": ["string", "number", "date", "datetime", "boolean"]},
+          "required": {"type": "boolean", "default": false}
+        },
+        "required": ["name", "dataType", "type"]
+      },
+      "sapafcsdk.scheduling.ProviderService.JobResult": {
+        "title": "JobResult",
+        "type": "object",
+        "properties": {
+          "ID": {"type": "string", "maxLength": 255},
+          "jobID": {"type": "string", "maxLength": 255},
+          "type": {"type": "string", "maxLength": 255, "enum": ["link", "data", "message"]},
+          "name": {"type": "string", "maxLength": 255},
+          "link": {"type": "string", "maxLength": 5000},
+          "mimeType": {"type": "string", "maxLength": 255},
+          "filename": {"type": "string", "maxLength": 5000}
+        },
+        "required": ["ID", "type", "name"]
+      },
+      "sapafcsdk.scheduling.ProviderService.JobResultMessage": {
+        "title": "JobResultMessage",
+        "type": "object",
+        "properties": {
+          "ID": {"type": "string", "maxLength": 255},
+          "resultID": {"type": "string", "maxLength": 255},
+          "severity": {"type": "string", "maxLength": 255, "enum": ["success", "info", "warning", "error"]},
+          "code": {"type": "string", "maxLength": 255},
+          "text": {"type": "string", "maxLength": 5000},
+          "createdAt": {"type": "string", "format": "date-time"}
+        },
+        "required": ["ID", "severity", "code", "text", "createdAt"]
+      },
+      "sapafcsdk.scheduling.ProviderService.Notification": {
+        "title": "Notification",
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "maxLength": 255, "enum": ["taskListStatusChanged"]},
+          "ID": {"type": "string", "maxLength": 255},
+          "code": {"type": "string", "maxLength": 255},
+          "value": {"type": "string", "maxLength": 5000}
+        }
+      },
+      "error": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": {"type": "string", "maxLength": 255},
+          "message": {"type": "string", "maxLength": 5000}
+        }
+      }
+    },
+    "responses": {
+      "400": {"description": "Incorrect request.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "401": {"description": "Unauthorized.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "403": {"description": "Access forbidden.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "404": {"description": "Resource not found.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "406": {"description": "Not acceptable.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "409": {"description": "Request conflict.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "411": {"description": "Length required.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "413": {"description": "Payload Too Large.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "415": {"description": "Unsupported Media Type.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "429": {"description": "Too many requests.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "500": {"description": "Internal server error.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "501": {"description": "Not implemented.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}},
+      "503": {"description": "Service unavailable.", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/error"}}}}
+    },
+    "securitySchemes": {
+      "oauth2": {"description": "OAuth 2.0 client credentials.", "type": "oauth2", "flows": {"clientCredentials": {"tokenUrl": "https://{subdomain}.authentication.{region}.hana.ondemand.com/oauth/token", "scopes": {}}}},
+      "bearer": {"description": "HTTP bearer authentication.", "type": "http", "scheme": "bearer", "bearerFormat": "JWT"}
+    }
+  },
+  "security": [{"oauth2": []}, {"bearer": []}]
+}

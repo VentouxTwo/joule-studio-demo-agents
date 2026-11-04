@@ -1,0 +1,20 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-sf-performance-and-goals-pmgm-mcp-server
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: PerformanceandGoalsPMGM
+    kind: api
+    ordId: sap.sf:apiResource:PerformanceandGoalsPMGM:v1
+
+provides:
+  apis:
+    - name: sap-sf-performance-and-goals-pmgm-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:sales-goal-advisor-e1d3e.sap-sf-performance-and-goals-pmgm-mcp-server:v1

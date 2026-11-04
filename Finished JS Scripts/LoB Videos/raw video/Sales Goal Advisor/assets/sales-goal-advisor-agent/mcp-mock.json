@@ -1,0 +1,243 @@
+{
+  "servers": {
+    "sap-sf-ec-employee-profile": {
+      "mcp_server_name": "sap.sf/ec-employee-profile",
+      "description": "SAP SuccessFactors Employee Profile — provides employee profile data including public profile and performance trend data.",
+      "tools": {
+        "get_eppublicprofile_for_sfodata": {
+          "description": "Retrieve a single entity by its key from the EPPublicProfile collection in the sfodata service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "userId": "jsmith",
+            "fullName": "John Smith",
+            "title": "Senior Account Executive",
+            "department": "Enterprise Sales - West",
+            "location": "San Francisco, CA",
+            "manager": "Sarah Johnson",
+            "introduction": "Focused on enterprise SaaS sales in the Bay Area territory.",
+            "hasAboutMeVideo": false,
+            "hasIntroduction": true
+          }
+        },
+        "list_trenddata_sysoverallperformance_for_sfodata": {
+          "description": "Retrieve a list of entities from the TrendData_SysOverallPerformance collection in the sfodata service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "id": 1001,
+                "userId": "jsmith",
+                "rating": 3.8,
+                "label": "Exceeds Expectations",
+                "startDate": "/Date(1704067200000)/",
+                "endDate": "/Date(1711929600000)/",
+                "module": "PM",
+                "source": "manager"
+              },
+              {
+                "id": 1002,
+                "userId": "jsmith",
+                "rating": 3.5,
+                "label": "Meets Expectations",
+                "startDate": "/Date(1672531200000)/",
+                "endDate": "/Date(1680307200000)/",
+                "module": "PM",
+                "source": "manager"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sap-sf-performance-and-goals-pmgm": {
+      "mcp_server_name": "sap.sf/performance-and-goals-pmgm",
+      "description": "SAP SuccessFactors Goal Plan — manage quarterly objectives and goal plan templates.",
+      "tools": {
+        "list_goal_1_for_sfodata": {
+          "description": "Retrieve a list of entities from the Goal_1 collection in the sfodata service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "id": 5001,
+                "userId": "jsmith",
+                "name": "Close Q4 Pipeline - $500K",
+                "metric": "Revenue",
+                "category": "Pipeline",
+                "state": "In Progress",
+                "done": 35,
+                "due": "/Date(1756598400000)/",
+                "start": "/Date(1748822400000)/",
+                "weight": 40
+              },
+              {
+                "id": 5002,
+                "userId": "jsmith",
+                "name": "Conduct 20 Discovery Calls",
+                "metric": "Activity Count",
+                "category": "Activity",
+                "state": "In Progress",
+                "done": 60,
+                "due": "/Date(1756598400000)/",
+                "start": "/Date(1748822400000)/",
+                "weight": 30
+              },
+              {
+                "id": 5003,
+                "userId": "jsmith",
+                "name": "Expand into 3 New Accounts",
+                "metric": "New Account Count",
+                "category": "Growth",
+                "state": "In Progress",
+                "done": 0,
+                "due": "/Date(1756598400000)/",
+                "start": "/Date(1748822400000)/",
+                "weight": 30
+              }
+            ]
+          }
+        },
+        "create_goal_1_for_sfodata": {
+          "description": "Create a new instance of the Goal_1 EntitySet in the sfodata service. If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": 5010,
+            "userId": "jsmith",
+            "name": "New Goal",
+            "metric": "",
+            "category": "Pipeline",
+            "state": "In Progress",
+            "done": 0,
+            "due": "/Date(1756598400000)/",
+            "start": "/Date(1751414400000)/",
+            "weight": 33,
+            "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+          }
+        },
+        "list_goalplantemplate_for_sfodata": {
+          "description": "Retrieve a list of entities from the GoalPlanTemplate collection in the sfodata service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "id": 1,
+                "name": "Q3 2026 Sales Goals",
+                "defaultTemplate": true,
+                "startDate": "/Date(1748822400000)/",
+                "dueDate": "/Date(1756598400000)/"
+              },
+              {
+                "id": 2,
+                "name": "Annual Development Plan",
+                "defaultTemplate": false,
+                "startDate": "/Date(1735689600000)/",
+                "dueDate": "/Date(1767225600000)/"
+              }
+            ]
+          }
+        },
+        "function_getdefaultgoalplantemplateid_for_sfodata": {
+          "description": "OData function: getDefaultGoalPlanTemplateId in the sfodata service. Returns: Edm.Int64",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 1
+        }
+      }
+    },
+    "sap-sf-pmgm-continuous-performance": {
+      "mcp_server_name": "sap.sf/pmgm-continuous-performance-management",
+      "description": "SAP SuccessFactors Continuous Performance Management — manage activities, achievements, and feedback.",
+      "tools": {
+        "list_activity_for_sfodata": {
+          "description": "Retrieve a list of entities from the Activity collection in the sfodata service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "activityId": 2001,
+                "activityName": "Follow up on Acme Corp proposal",
+                "subjectUserId": "jsmith",
+                "activityStatus": "open",
+                "createdDate": "/Date(1748908800000)/"
+              },
+              {
+                "activityId": 2002,
+                "activityName": "Schedule EBR with TechCorp",
+                "subjectUserId": "jsmith",
+                "activityStatus": "in_progress",
+                "createdDate": "/Date(1748995200000)/"
+              }
+            ]
+          }
+        },
+        "list_achievement_for_sfodata": {
+          "description": "Retrieve a list of entities from the Achievement collection in the sfodata service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sfodata tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "achievementId": 3001,
+                "achievementName": "Closed Acme Corp - $125K deal",
+                "subjectUserId": "jsmith",
+                "achievementDate": "/Date(1748390400000)/",
+                "reviewed": true
+              },
+              {
+                "achievementId": 3002,
+                "achievementName": "Exceeded Q2 activity target by 120%",
+                "subjectUserId": "jsmith",
+                "achievementDate": "/Date(1748476800000)/",
+                "reviewed": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "sales-goal-advisor-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 3,
+    "total_tools": 7,
+    "generated_from": [
+      "translation.json (sap-sf-ec-employee-profile-mcp-server)",
+      "translation.json (sap-sf-performance-and-goals-pmgm-mcp-server)",
+      "translation.json (sap-sf-pmgm-continuous-performance-management-mcp-server)"
+    ],
+    "generation_date": "2026-10-01"
+  }
+}

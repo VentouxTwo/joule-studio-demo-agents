@@ -1,0 +1,44 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: agent
+
+metadata:
+  name: financial-closing-advisor-agent
+  version: "1.0.0"
+
+provides:
+  apis:
+    - name: financial-closing-advisor-agent
+      kind: a2a
+      ordId: customer.build:apiResource:financial-closing-advisor-94a36.financial-closing-advisor-agent:v1
+
+requires:
+  - name: sap-afc-scheduling-spi-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:financial-closing-advisor-94a36.sap-afc-scheduling-spi-mcp-server:v1
+  - name: sap-afc-task-provider-v2-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:financial-closing-advisor-94a36.sap-afc-task-provider-v2-mcp-server:v1
+
+container:
+  buildPath: .
+  port: 5000
+
+probes:
+  startup:
+    path: /.well-known/agent.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

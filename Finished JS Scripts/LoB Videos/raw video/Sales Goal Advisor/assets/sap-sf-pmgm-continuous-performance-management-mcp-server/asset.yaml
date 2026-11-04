@@ -1,0 +1,20 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-sf-pmgm-continuous-performance-management-mcp-server
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: PMGMContinuousPerformanceManagement
+    kind: api
+    ordId: sap.sf:apiResource:PMGMContinuousPerformanceManagement:v1
+
+provides:
+  apis:
+    - name: sap-sf-pmgm-continuous-performance-management-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:sales-goal-advisor-e1d3e.sap-sf-pmgm-continuous-performance-management-mcp-server:v1

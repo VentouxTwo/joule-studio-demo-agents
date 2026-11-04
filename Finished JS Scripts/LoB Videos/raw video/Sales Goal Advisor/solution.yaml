@@ -1,0 +1,13 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: sales-goal-advisor-e1d3e
+  version: "1.0.0"
+  description: "AI agent that guides sales representatives through creating quarterly development objectives using CRM territory data and SAP SuccessFactors."
+
+assets:
+  - ref: ./assets/sales-goal-advisor-agent/asset.yaml
+  - ref: ./assets/sap-sf-ec-employee-profile-mcp-server/asset.yaml
+  - ref: ./assets/sap-sf-performance-and-goals-pmgm-mcp-server/asset.yaml
+  - ref: ./assets/sap-sf-pmgm-continuous-performance-management-mcp-server/asset.yaml

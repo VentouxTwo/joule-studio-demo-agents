@@ -1,0 +1,17 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "SAP Task Center Service Provider Interface",
+    "description": "SAP Advanced Financial Closing provides a public API exposing Task Center Service Provider Interface. Task Center is an infrastructure service enabling business users to manage all their workflow tasks at one place by integrating tasks from multiple SAP applications.",
+    "version": "2.0.0"
+  },
+  "servers": [{"url": "/api/task-provider/v2"}],
+  "paths": {
+    "/tasks": {"get": {"summary": "Retrieve all tasks updated after a certain point in time.", "operationId": "provider_getTasks", "parameters": [{"name": "modifiedAfter", "in": "query", "required": true, "schema": {"type": "string"}}, {"name": "$top", "in": "query", "schema": {"type": "integer", "maximum": 1000, "default": 100}}, {"name": "languages", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Returns the matching tasks"}}}},
+    "/tasks/{taskUrn}": {"get": {"summary": "Retrieve a single task.", "operationId": "provider_getTask", "parameters": [{"name": "taskUrn", "in": "path", "required": true, "schema": {"type": "string"}}, {"name": "languages", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Returns the task"}}}},
+    "/tasks/{taskUrn}/response": {"post": {"summary": "Respond to a task (completing).", "operationId": "provider_storeTaskResponse", "parameters": [{"name": "taskUrn", "in": "path", "required": true, "schema": {"type": "string"}}, {"name": "languages", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Task responded to"}}}},
+    "/tasks/{taskUrn}/action": {"post": {"summary": "Execute a non-completing action on a task.", "operationId": "provider_storeTaskAction", "parameters": [{"name": "taskUrn", "in": "path", "required": true, "schema": {"type": "string"}}, {"name": "languages", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Action executed"}}}},
+    "/taskDefinitions": {"get": {"summary": "Retrieve a list of all task definitions.", "operationId": "provider_getTaskDefinitions", "parameters": [{"name": "$top", "in": "query", "schema": {"type": "integer", "default": 100}}, {"name": "$skip", "in": "query", "schema": {"type": "integer", "default": 0}}, {"name": "languages", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Returns the list of task definitions"}}}},
+    "/capabilities": {"get": {"summary": "Introspect technical capabilities supported by the task provider.", "operationId": "provider_getCapabilities", "responses": {"200": {"description": "Returns the task provider capabilities"}}}}
+  }
+}

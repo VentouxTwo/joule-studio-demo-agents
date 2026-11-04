@@ -1,0 +1,20 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-afc-task-provider-v2-mcp-server
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+requires:
+  - name: TaskProviderV2
+    kind: api
+    ordId: sap.afc:apiResource:TaskProviderV2:v1
+
+provides:
+  apis:
+    - name: sap-afc-task-provider-v2-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:financial-closing-advisor-94a36.sap-afc-task-provider-v2-mcp-server:v1

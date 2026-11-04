@@ -1,0 +1,23 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "SAP Advanced Financial Closing Scheduling Service Provider Interface",
+    "description": "The Scheduling Service Provider Interface of SAP Advanced Financial Closing allows the integration of third-party scheduling systems with SAP Advanced Financial Closing.",
+    "version": "1.0.0"
+  },
+  "servers": [{"url": "/api/job-scheduling/v1"}],
+  "paths": {
+    "/Capabilities": {"get": {"summary": "Retrieves capabilities.", "tags": ["Capabilities"], "responses": {"200": {"description": "Retrieved capabilities"}}}},
+    "/Job": {
+      "get": {"summary": "Retrieves a list of jobs.", "tags": ["Job"], "parameters": [{"name": "skip", "in": "query", "schema": {"type": "string"}}, {"name": "top", "in": "query", "schema": {"type": "string"}}, {"name": "referenceID", "in": "query", "schema": {"type": "string", "format": "uuid"}}, {"name": "name", "in": "query", "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved jobs"}}},
+      "post": {"summary": "Creates a single job.", "tags": ["Job"], "responses": {"201": {"description": "Created job"}}}
+    },
+    "/Job/{ID}": {"get": {"summary": "Retrieves a single job.", "tags": ["Job"], "parameters": [{"name": "ID", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved job"}}}},
+    "/Job/{ID}/results": {"get": {"summary": "Retrieves results of a job.", "tags": ["Job"], "parameters": [{"name": "ID", "in": "path", "required": true, "schema": {"type": "string"}}, {"name": "top", "in": "query", "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved results"}}}},
+    "/JobDefinition": {"get": {"summary": "Retrieves a list of job definitions.", "tags": ["Job Definition"], "parameters": [{"name": "top", "in": "query", "schema": {"type": "string"}}, {"name": "search", "in": "query", "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved job definitions"}}}},
+    "/JobDefinition/{name}": {"get": {"summary": "Retrieves a single job definition.", "tags": ["Job Definition"], "parameters": [{"name": "name", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved job definition"}}}},
+    "/JobResult/{ID}": {"get": {"summary": "Retrieves a single job result.", "tags": ["Job Result"], "parameters": [{"name": "ID", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved job result"}}}},
+    "/JobResult/{ID}/messages": {"get": {"summary": "Retrieves messages of a job result.", "tags": ["Job Result"], "parameters": [{"name": "ID", "in": "path", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Retrieved messages"}}}},
+    "/notify": {"post": {"summary": "Sends a notification about task list status changes.", "tags": ["Notification"], "responses": {"204": {"description": "Success"}}}}
+  }
+}
