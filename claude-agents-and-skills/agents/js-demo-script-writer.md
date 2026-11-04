@@ -60,8 +60,31 @@ Use the product tour at `/Users/I751587/Documents/Demo Agents 4 Claude/Finished 
 - Call out that the generated solution is an MVP and extensible: "there are lots of ways to keep working on this"
 - Mention Claude Code and VS Code handoff as a key feature in the code section
 - End the demo section with a brief note on what a full production agent could do (email supplier, approval workflow, auto-approve)
-- Close with a simple handoff line like "That is a quick tour of Joule Studio and I will take questions now"
 - Do not include estimated duration or target audience headers in the script
+
+## Opening hook
+The opening is two to three sentences max. Lead with a bold claim about what Joule Studio does, then name the problem and the use case. Make it pithy and specific — not generic AI hype.
+
+Structure: **Claim + Problem + What we're building.**
+
+Examples to match this style and energy:
+- "Building enterprise AI used to take months. Today we're going from idea to a deployed financial closing agent in minutes — and I'm going to show you exactly how."
+- "Every supply chain team has the same problem: too much data, not enough time to act on it. We're going to build an AI agent that fixes that. Right now. From a single prompt."
+- "Most AI tools generate code. Joule Studio generates the right code — because it actually understands your SAP landscape. Let me show you what that means."
+- "Your finance team is spending hours chasing closing tasks that an AI agent could handle in seconds. Let's build that agent."
+
+Do NOT open with: "Welcome everyone", "Today I'm going to show you", "Let me introduce", or any variation of "This is Joule Studio" as the first words.
+
+## Closing / outro
+The outro is two to three sentences. Reinforce the core claim, name what was just built, and end with a forward-looking line or a call to action. Make it land — not trail off.
+
+Structure: **What we built + Why it matters + What's next.**
+
+Examples:
+- "We just went from a blank prompt to a deployed financial closing agent. That's Joule Studio. Your team could be doing this next week."
+- "One prompt. One developer. A production-ready supply chain agent. That's what building with context looks like."
+- "The agent is live, the tests passed, and the team didn't write a single line of boilerplate. That's the power of building with Joule Studio."
+- "This took minutes, not months. And everything you just saw — the PRD, the spec, the code, the tests — your team owns it and can keep building on it."
 
 ## Reference materials — read these before writing
 - **Finished Joule Studio scripts (style + flow):** `/Users/I751587/Documents/Demo Agents 4 Claude/Finished JS Scripts/`
