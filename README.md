@@ -1,6 +1,6 @@
 # Joule Studio Demo Script Writer
 
-This is a Claude Code agent that writes live demo scripts for Joule Studio presentations. Instead of starting from scratch before every demo, you describe your persona and industry vertical and the agent generates a structured voiceover script ready for a 10-minute live audience demo.
+This is a Claude Code agent that writes live demo scripts for Joule Studio presentations. Instead of starting from scratch before every demo, you describe your persona and industry vertical and the agent generates a structured voiceover script.
 
 ## What it does
 
