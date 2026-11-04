@@ -10,7 +10,15 @@ It also includes a companion skill for generating scripts directly from recorded
 
 ## How to use it
 
-Download the agent file and add it to your `~/.claude/agents/` folder. The skill goes in `~/.claude/skills/lob-demo-script/`. Open Claude Code, tell it your persona and industry, and it handles the rest.
+Download the agent file and add it to your `~/.claude/agents/` folder. The skill goes in `~/.claude/skills/lob-demo-script/`. Open Claude Code and tell it:
+
+- **Persona** — who is the main character in the demo story (e.g. a finance controller, an HR business partner, a supply chain manager)
+- **Use case** — what business problem are they solving
+- **Features** — which Joule Studio features you want to highlight
+- **Length** — how long the demo needs to run (e.g. 3 minutes, 10 minutes)
+- **Tone** — how you want it to sound (e.g. conversational, technical, executive-level)
+
+The agent handles the rest and outputs a ready-to-use Word document.
 
 ## What's in this repo
 
